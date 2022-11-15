@@ -1,12 +1,14 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
+import './assets/icons/fa/css/all.min.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import Footer from './components/Footer';
 import PageHeader from './components/PageHeader';
 import Navigation from './components/Navigation';
-import './styles/index.css'
+import './styles/index.css';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
