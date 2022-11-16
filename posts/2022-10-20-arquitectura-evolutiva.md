@@ -21,7 +21,6 @@ Refiriéndose al entorno donde se despliega y donde se ejecuta, comenzado a evol
 
 Esto se debe a que los cambios de software realmente tienen dos orígenes. Por un lado, están los cambios relacionados al modelo de negocio (los famosos requerimientos) donde existen herramientas para gestionarlos dentro del proyecto. Pero, además hay otros tipos de cambios que son generalmente ignorados; los cambios en el ecosistema donde funciona y ejecuta el software. Donde podemos observar como el entorno donde se despliega el software no es estático, si no que va evolucionando con su propia velocidad y de manera independiente.
 
-  1.
 ## **Atributos de calidad**
 
 Como ya se habló anteriormente, los atributos de calidad son requerimientos no funcionales para evaluar el rendimiento de un sistema. Estos atributos de calidad se denominan "-ilidades", debido al sufijo que la mayoría de estos términos comparten. Estos atributos son representados por los requerimientos que requieren la atención de los arquitectos. Ver lista de [atributos de calidad](https://en.wikipedia.org/wiki/List_of_system_quality_attributes).
@@ -32,12 +31,12 @@ Haciendo una relación, si los sistemas se crean en la mente de los desarrollado
 
 Dentro de la arquitectura evolutiva, el atributo Evolucionabilidad es una característica, una envoltura arquitectónica que protege las demás características arquitectónicas. Pero que también guía las decisiones en otros atributos de calidad.
 
-  1.
+
 ## **Cambio incremental**
 
 El camio incremental se refiere a los equipos que construyen de forma incremental, y su despliegue. Esto es parte del ADM (Application Lifecycle Magament). Donde la primera parte se puede cubrir usando la técnica de desarrollo Extreame programing (EX.). Mientras que la segunda se puede cubrir implementado prácticas de CD Continuos Delivery.
 
-  1.
+
 ## **Fitness functions (funciones de aptitud)**
 
 A medida que la arquitectura va evolucionando, necesitamos mecanismos que evalúen los cambios y como afectan esos cambios a las características de la arquitectura y evitar así la degradación de esas características en el tiempo.
@@ -65,18 +64,18 @@ Por último, las funciones de aptitud se pueden caracterizar a través de distin
 
 A continuación, se muestra un ejemplo de cómo representar las funciones de aptitud de una arquitectura evolutiva.
 
-![](RackMultipart20221115-1-b3kzlb_html_b7edc1d9bd2c4c82.png)
+![](/assets/posts/2/fitnes-function.png)
 
 El análisis previo de que función de aptitud debería existir en un sistema particular, proporciona direccionamiento en la toma de decisiones y su planificación en el tiempo. Las decisiones de arquitectura son evaluadas en relación con las funciones de aptitud de tal manera que podamos verificar que la arquitectura está evolucionando en la dirección correcta.
 
-  1.
+
 ## **Cómo ocurren las decisiones**
 
 La mayor diferencia entre la arquitectura tradicional y la evolutiva es justamente cuando ocurren las decisiones. Estas decisiones pueden ser sobre la estructura de la aplicación, la pila de tecnología, herramientas especificas o patrones de comunicación. En la arquitectura tradicional estas decisiones se toman de forma temprana, antes de escribir código más precisamente. En una arquitectura evolutiva, esperamos hasta el último momento responsable para tomar decisiones. El beneficio de tomar de forma retrasada la decisión es la información adicional disponible para tomarla. El costo asociado es el de cualquier posible retrabajo que tiene que ocurrir una vez que la decisión fue tomada, que puede ser mitigado a través de las abstracciones apropiadas (el costo sigue siendo real). Sin embargo, el costo de tomar una decisión demasiado temprano es también real.
 
 Esto no quiere decir que deberíamos abstraer todas las cosas de forma anticipada (nos apoyamos en el principio ágil YAGNI, You Ain´t Gonna Need It) sino para optar por un intento informado y tomar la decisión en un momento más adecuado.
 
-  1.
+
 ## **Planificación a largo plazo**
 
 Como sabemos, en los ecosistemas biológicos, el medio ambiente cambia constantemente tanto por causas naturales y causas humanas. Dado que, aunque se traten de sistemas, lo que implica cierto orden intrínseco en sí mismo, es que son sistemas abiertos al cambio. Es decir, que los ecosistemas tienden tienden al equilibrio de forma natural, pero que, si aparece un nuevo elemento o agente que modifique el equilibrio, se genera un cambio en el ecosistema y esta tendera a asumirlo como propio e intentar adaptarse a dicho cambio. No obstante, el éxito o fracaso a la hora de adaptarse a dicho cambio será el que determine la supervivencia del ecosistema en su conjunto.
@@ -87,13 +86,13 @@ Uno de los factores que hay que tener en cuenta al momento de que se den cambios
 
 Dentro de un ecosistema de desarrollo de software este compuesto de herramientas, marcos de trabajo, bibliotecas y mejores prácticas: el estado del arte acumulado en el desarrollo de software. Este ecosistema forma un equilibrio, muy similar a un sistema biológico, que los desarrolladores pueden entender y construir cosas dentro del ecosistema. Sin embargo, este equilibrio es dinámico: constantemente aparecen cosas nuevas, que alteran inicialmente el equilibrio hasta que surge un nuevo equilibrio. Imagine a una persona caminando y transportando unas cajas de un punto a otro. Esto en física se lo conoce como equilibrio dinámico, por que la persona va a estar manteniendo un equilibrio al caminar, evitando obstáculos en su camino y/o eventos que puedan hacer perder el equilibrio y que las cajas se caigan.
 
-![](RackMultipart20221115-1-b3kzlb_html_ac5271dfe592f9fa.png)
+![](/assets/posts/2/balance.png)
 
 En el ecosistema de desarrollo de software, cada innovación o practica puede alterar el statu quo, obligando a generar un nuevo equilibrio. Siguiendo el ejemplo anterior, seguimos cargando cajas a la persona que las transporta, obligándola a regenerar un nuevo equilibrio.
 
 En muchas maneras, los arquitectos se parecen a la persona que transporta las cajas, constantemente se encuentran equilibrándose y adaptándose a las condiciones de cambios dinámicos. Las prácticas de CI (Continuous Delivery) representa un cambio en el equilibrio: la incorporación de funciones anteriormente aisladas, como las operaciones, dentro del ciclo de vida de desarrollo de software permitió nuevas perspectivas sobre el significado del cambio. Los arquitectos empresariales ya no pueden confiar en planes estáticos a futuro, por ejemplo, a 5 años, porque todo el universo de desarrollo de software evolucionara en ese periodo de tiempo, lo que lograra que a cada decisión a largo plazo sea potencialmente discutible.
 
-  1.
+
 ## **Degradación de la arquitectura en el tiempo**
 
 Para poder entender este concepto debemos acuñar el termino de "bit rot", que refiere a la deterioro o degradación de los componentes dentro de una arquitectura con el paso del tiempo. Por ejemplo; este término es a menudo utilizado para describir como gradualmente se va transformando el código en incorrecto debido a cambios en la interface del código activo que es requerido dentro de un código incorrecto.
@@ -104,7 +103,7 @@ Los arquitectos debemos lidiar con esta degradación accidentales y eventuales a
 
 Detrás del concepto de arquitectura evolutiva, se desarrollan mecanismos que sirven para proteger las características importantes de la arquitectura. Esto se basa en definir arquitecturas que no tienen un estado final y están diseñadas o preparadas para evolucionar junto con el ecosistema de desarrollo de software en constante cambios, que incluyen protecciones integradas a las características importantes de la arquitectura. Si no que, nos enfocamos en las definiciones actuales para agregar tiempo y cambiar los elementos arquitectónicos para un análisis posterior.
 
-  1.
+
 ## **Katas**
 
 En el siguiente enlace podemos ingresar a un sitio con distintos katas para practicar las arquitecturas por medio de las funciones de aptitud. En el sitio se encuentras las reglas para practicar estos katas: [Building Evolutionary Architecture Katas](http://evolutionaryarchitecture.com/ffkatas/index.html).
