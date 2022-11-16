@@ -8,15 +8,15 @@ import Post from './pages/post';
 import NoPage from './pages/nopage';
 
 export const App = () => (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
         <Routes>
             {/* Exact match to avoid 
             overriding other routes */}
             <Route index path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/posts/:id/:cover" element={<Post />} />
-            <Route path="*" element={<NoPage />} />
+            <Route exact path="/about" element={<About />} />
+            <Route exact path="/contact" element={<Contact />} />
+            <Route exact path="/posts/:id/:cover" element={<Post />} />
+            <Route exact path="*" element={<NoPage />} />
         </Routes>
     </Router>
 );
