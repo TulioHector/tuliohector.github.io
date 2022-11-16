@@ -5,7 +5,6 @@ const PageHeader = () => {
     const [headerConf, setHeaderConf] = useState('');
     
     useEffect(() => {
-        console.log("pageConfig", pageConfig);
         setHeaderConf(pageConfig);
     }, [headerConf]);
     return (

@@ -10,8 +10,6 @@ import NoPage from './pages/nopage';
 export const App = () => (
     <Router basename={process.env.PUBLIC_URL}>
         <Routes>
-            {/* Exact match to avoid 
-            overriding other routes */}
             <Route index path="/" element={<Home />} />
             <Route exact path="/about" element={<About />} />
             <Route exact path="/contact" element={<Contact />} />

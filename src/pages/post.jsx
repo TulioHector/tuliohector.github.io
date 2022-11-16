@@ -21,10 +21,10 @@ const Post = () => {
     useEffect(() => {
         fetchFile();
 
-        pageConfig.backgroundImage = `url('./assets/img/${cover}')`;
-        pageConfig.pageTitle = "Post Title";
-        pageConfig.pageSubTitle = "Post Descriptions";
-    }, [fetchFile,cover])
+        pageConfig.backgroundImage = `url('/assets/img/${cover}')`;
+        pageConfig.pageTitle = "";
+        pageConfig.pageSubTitle = "";
+    }, [fetchFile,cover]);
     return (
         <article className="mb-4">
             <div className="container px-4 px-lg-5">

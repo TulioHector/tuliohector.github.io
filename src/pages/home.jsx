@@ -21,9 +21,9 @@ class Home extends Component {
                                         <h3 className="post-subtitle">{item.Description}</h3>
                                     </a>
                                     <p className="post-meta">
-                                        Posted by 
-                                        <a href="#!">{item.Author}</a>
-                                        {item.DatePublish}
+                                        Posted by
+                                        <a href="#!"> {item.Author} </a>
+                                         {item.DatePublish}
                                     </p>
                                 </div>
                                 <hr className="my-4" />
