@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Markdown from "markdown-to-jsx"
 import Code from "../components/Code"
 import { pageConfig } from '../components/context';
-import '../styles/Post.css'
+import '../styles/Post.css';
 
 const Post = () => {
     const [postContent, setPostcontent] = useState('');

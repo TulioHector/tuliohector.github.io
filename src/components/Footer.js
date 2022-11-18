@@ -31,7 +31,7 @@ function Footer() {
                                 </a>
                             </li>
                         </ul>
-                        <div className="small text-center text-muted fst-italic">Copyright &copy; Your Website 2022</div>
+                        <div className="small text-center text-muted fst-italic">Copyright &copy; Hector Abraham Romano {new Date().getFullYear()}</div>
                     </div>
                 </div>
             </div>
