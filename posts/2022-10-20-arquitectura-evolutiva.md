@@ -1,3 +1,4 @@
+
 Dentro de los enfoques tradicionales de arquitectura, se sostiene que los elementos de una arquitectura eran "difíciles de cambiar después". Donde la realidad termina sobrepasando a la arquitectura provocando una distancia entre lo esperado y lo que se obtiene. Una arquitectura evolutiva plantea un diseño de cambios incrementales en la arquitectura. En el libro (Neal Ford, Building Evolutionary Architectures, 2017). Este nuevo enfoque permite que la arquitectura se adapte desde un principio a la realidad.
 
 En la actualidad, ya no es posible encasillar una arquitectura en el contexto "es difícil de cambiar". Especialmente hoy en día que todo está inspirado en metodologías agiles, los requerimientos funcionales, no funcionales y atributos de calidad cambian rápidamente. Acá es donde entra en juego el concepto de arquitectura evolutiva. Soportando cambios guiados, continuos e incrementales como primer principio a largo plazo entre muchas dimensiones.
