@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
-import Markdown from "markdown-to-jsx"
-import Code from "../components/Code"
+import Markdown from "markdown-to-jsx";
+import {Helmet} from "react-helmet";
+import Code from "../components/Code";
 import { pageConfig } from '../components/context';
 import '../styles/Post.css';
 
@@ -27,6 +28,10 @@ const Post = () => {
     }, [fetchFile,cover]);
     return (
         <article className="mb-4">
+            <Helmet>
+                <title>{id}</title>
+                <link rel="canonical" href={`http://mysite.com/${postUrl}`} />
+            </Helmet>
             <div className="container px-4 px-lg-5">
                 <div className="row gx-4 gx-lg-5 justify-content-center">
                     <div className="col-md-10 col-lg-8 col-xl-7">
