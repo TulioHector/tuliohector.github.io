@@ -1,3 +1,5 @@
-# https://www.robotstxt.org/robotstxt.html
+# https://tuliohector.github.io/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /assets
+
+sitemap: https://tuliohector.github.io/sitemap.xml
