@@ -1,22 +1,56 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-// Import components
-import Home from "./pages/home";
-import About from "./pages/about";
-import Contact from "./pages/contact";
+import { Component, Suspense, lazy } from 'react';
+import { Routes, Route } from "react-router-dom";
 import Post from './pages/post';
-import NoPage from './pages/nopage';
+import Home from './pages/home';
+import Layout from './pages/layout';
 
-export const App = () => (
-    <Router basename={process.env.PUBLIC_URL}>
-        <Routes>
-            <Route index path="/" element={<Home />} />
-            <Route exact path="/about" element={<About />} />
-            <Route exact path="/contact" element={<Contact />} />
-            <Route exact path="/posts/:id/:cover" element={<Post />} />
-            <Route exact path="*" element={<NoPage />} />
-        </Routes>
-    </Router>
-);
+import Skeleton from './components/skeleton';
+import './styles/skeleton.css';
 
-export default App
+const About = lazy(() => import("./pages/about"));
+const Contact = lazy(() => import("./pages/contact"));
+const NoPage = lazy(() => import('./pages/nopage'));
+
+class App extends Component {
+    render() {
+        return (
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route
+                        path="about"
+                        element={
+                            <>
+                            <Suspense fallback={<Skeleton />}>
+                                <About />
+                            </Suspense>
+                            </>
+                        }
+                    />
+                    <Route
+                        path="contact"
+                        element={
+                            <>
+                            <Suspense fallback={<Skeleton />}>
+                                <Contact />
+                            </Suspense>
+                            </>
+                        }
+                    />
+                    <Route 
+                        exact path="/posts/:post/:id" 
+                        element={
+                            <>
+                            <Suspense fallback={<Skeleton />}>
+                                <Post />
+                            </Suspense>
+                            </>
+                        } />
+                    <Route exact path="*" element={<NoPage />} />
+                </Route>
+            </Routes>
+        )
+    }
+}
+
+export default App;

@@ -1,18 +1,30 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit, where} from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { pageConfig } from './context';
 //https://firebase.google.com/docs/firestore/query-data/queries
 export class Database {
     static auth;
     static db;
+    static app = initializeApp(pageConfig.firebaseConfi);
 
-    static async getPostList() {
-        const app = initializeApp(pageConfig.firebaseConfi);
-        this.auth = getAuth(app);
-        this.db = getFirestore(app);
+    static async getConnnections() {
+        this.auth = getAuth(this.app);
+        this.db = getFirestore(this.aapp);
+    }
+
+    static async getPostList() {        
+        await Database.getConnnections();
         const postsRef = collection(this.db, "posts");
         const q = query(postsRef, orderBy("DatePublish"), limit(10));
+        const querySnapshot = await getDocs(q);
+        return querySnapshot;
+    }
+
+    static async getPOstById(id) {
+        await Database.getConnnections();
+        const postsRef = collection(this.db, "posts");
+        const q = query(postsRef, where("id", "==", id));
         const querySnapshot = await getDocs(q);
         return querySnapshot;
     }

@@ -1,26 +1,30 @@
-import { useEffect, useState } from 'react';
-import { pageConfig } from '../components/context';
+import { Component } from 'react';
+import { PageContext } from '../components/context';
 
-const PageHeader = () => {
-    const [headerConf, setHeaderConf] = useState('');
+class PageHeader extends Component {
+    static contextType = PageContext;
     
-    useEffect(() => {
-        setHeaderConf(pageConfig);
-    }, [headerConf]);
-    return (
-        <header className="masthead" style={{ backgroundImage: headerConf.backgroundImage }}>
-            <div className="container position-relative px-4 px-lg-5">
-                <div className="row gx-4 gx-lg-5 justify-content-center">
-                    <div className="col-md-10 col-lg-8 col-xl-7">
-                        <div className="site-heading">
-                            <h1>{headerConf.pageTitle}</h1>
-                            <span className="subheading">{headerConf.pageSubTitle}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-    );
+    render() {
+        return (
+            <>
+                <PageContext.Consumer>
+                    {
+                        value => <header className="masthead" style={{ backgroundImage: value.pageSettings.backgroundImage }}>
+                            <div className="container position-relative px-4 px-lg-5">
+                                <div className="row gx-4 gx-lg-5 justify-content-center">
+                                    <div className="col-md-10 col-lg-8 col-xl-7">
+                                        <div className="site-heading">
+                                            <h1>{value.pageSettings.pageTitle}</h1>
+                                            <span className="subheading">{value.pageSettings.pageSubTitle}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                    }
+                </PageContext.Consumer>
+            </>
+        );
+    }
 }
-
 export default PageHeader;

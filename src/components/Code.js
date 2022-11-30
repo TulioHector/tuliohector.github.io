@@ -18,26 +18,28 @@ const Code = ({ children, language, isDark, setIsDark }) => {
   }
 
   return (
-    <div className="code">
-      <div className="code__icons">
-        <button onClick={() => setIsDark(!isDark)}>
-          {isDark ? <MoonIcon /> : <SunIcon />}
-        </button>
-
-        <CopyToClipboard text={children}>
-          <button onClick={() => setCopied()}>
-            {isCopied
-              ? <span title="Copied!"><PasteIcon /></span>
-              : <span title="Copy to Clipboard"><CopyIcon /></span>
-            }
+    <>
+      <div className="code">
+        <div className="code__icons">
+          <button onClick={() => setIsDark(!isDark)}>
+            {isDark ? <MoonIcon /> : <SunIcon />}
           </button>
-        </CopyToClipboard>
-      </div>
 
-      <SyntaxHighlighter language={language} style={isDark ? materialDark : materialLight}>
-        {children}
-      </SyntaxHighlighter>
-    </div>
+          <CopyToClipboard text={children}>
+            <button onClick={() => setCopied()}>
+              {isCopied
+                ? <span title="Copied!"><PasteIcon /></span>
+                : <span title="Copy to Clipboard"><CopyIcon /></span>
+              }
+            </button>
+          </CopyToClipboard>
+        </div>
+
+        <SyntaxHighlighter language={language} style={isDark ? materialDark : materialLight}>
+          {children}
+        </SyntaxHighlighter>
+      </div>
+    </>
   )
 }
 

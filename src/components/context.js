@@ -1,4 +1,4 @@
-import React from 'react';
+import {createContext, useState} from 'react';
 
 export const pageConfig = {
     "backgroundImage": "url('assets/img/home-bg.jpg')",
@@ -14,9 +14,19 @@ export const pageConfig = {
         appId: "1:782647056381:web:c4b836092a06d03fc0ab94",
         measurementId: "G-5LDTLQ3CPB"
         //databaseURL: "https://blog-hector-default-rtdb.firebaseio.com/"
-    }
+    },
 };
 
-export const PageContext = React.createContext(
-    pageConfig // default value
-);
+export const PageContext = createContext();
+
+export const PageContextProvider = (props) => {
+    const [pageSettings, setPageSettings] = useState(pageConfig);
+
+    return (
+        <PageContext.Provider value={{pageSettings, setPageSettings}}>
+            {props.children}
+        </PageContext.Provider>
+    )
+}
+
+export default PageContextProvider;
