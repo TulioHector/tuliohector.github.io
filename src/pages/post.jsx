@@ -39,6 +39,7 @@ class Post extends Component {
             const postDb = Database.getPOstById(idPost);
             const response = await fetch(postUrl + '.md');
             const mdFile = await response.text();
+            
             this.setState({ postContent: mdFile });
             
             const result = await postDb.then((item) => {     
@@ -54,7 +55,7 @@ class Post extends Component {
             let pageConfig = this.context.pageSettings;
             const settings = {
                 ...pageConfig,
-                backgroundImage : `url('../../assets/img/${result.cover}')`,
+                backgroundImage : `url('../../assets/posts/${idPost}/${result.cover}')`,
                 pageTitle : "",
                 pageSubTitle : "",
             }
