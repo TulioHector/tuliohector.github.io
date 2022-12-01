@@ -4,7 +4,7 @@ import Database from '../components/Firebase';
 import Skeleton from '../components/skeleton';
 import '../styles/skeleton.css';
 import PageHeader from '../components/PageHeader';
-
+import SeoHeader from '../components/seoHeader';
 class Home extends Component {
     info = [];
     static contextType = PageContext;
@@ -13,7 +13,17 @@ class Home extends Component {
         super(props);
 
         this.state = {
-            posts: this.info
+            posts: this.info,
+            headers: [
+                {property: "og:locale", content: "es_AR"},
+                {property: "og:type", content: "website"},
+                {property: "og:title", content: "Blog – Technology"},
+                {property: "og:description", content: "Looking for "},
+                {property: "og:url", content: "https://tuliohector.github.io/"},
+                {property: "og:site_name", content: "Hector Romano Blog"},
+            ],
+            headerTitle: "Blog – Technology",
+            description: "Blog about Technology and architecture"
         };
     }
 
@@ -35,7 +45,8 @@ class Home extends Component {
     render() {
         return (
             <>
-            <PageHeader />
+                <PageHeader />
+                <SeoHeader metatags={this.state.headers} title={this.state.headerTitle} description={this.state.description}/>
                 <Suspense fallback={<Skeleton />}>
                     <div className="container px-4 px-lg-5">
                         <div className="row gx-4 gx-lg-5 justify-content-center">

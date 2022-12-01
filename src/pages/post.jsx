@@ -83,7 +83,6 @@ class Post extends Component {
                 <>
                     <PageHeader />
                     <Helmet>
-                        {console.log(this.state.postInfo)}
                         <title>{this.postName}</title>
                         <link rel="canonical" href={`https://tuliohector.github.io/posts/${this.postName}/${this.idPost}`} data-react-helmet="true"/>
                         <meta property="og:title" content={`${this.state.postInfo.Title}`} data-react-helmet="true"/>

@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { PageContext } from '../components/context';
 import PageHeader from '../components/PageHeader';
+import SeoHeader from '../components/seoHeader';
 
 class About extends Component {
     static contextType = PageContext;
@@ -12,12 +13,26 @@ class About extends Component {
         pageConfig.pageTitle = "About Me";
         pageConfig.pageSubTitle = "";
         context.setPageSettings(pageConfig);
+
+        this.state = {
+            headers: [
+                {property: "og:locale", content: "es_AR"},
+                {property: "og:type", content: "website"},
+                {property: "og:title", content: "Blog – Technology"},
+                {property: "og:description", content: "Looking for "},
+                {property: "og:url", content: "https://tuliohector.github.io/"},
+                {property: "og:site_name", content: "Hector Romano Blog"},
+            ],
+            headerTitle: "Blog – Technology / Contact me",
+            description: "Blog about Technology and architecture-> Contact me"
+        };
     }
 
     render() {
         return (
             <>
             <PageHeader />
+            <SeoHeader metatags={this.state.headers} title={this.state.headerTitle} description={this.state.description}/>
             <main className="mb-4">
                 <div className="container px-4 px-lg-5">
                     <div className="row gx-4 gx-lg-5 justify-content-center">
