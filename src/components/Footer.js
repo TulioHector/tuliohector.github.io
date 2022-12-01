@@ -16,14 +16,6 @@ function Footer() {
                                 </a>
                             </li>
                             <li className="list-inline-item">
-                                <a href="#!">
-                                    <span className="fa-stack fa-lg">
-                                        <i className="fas fa-circle fa-stack-2x"></i>
-                                        <i className="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li className="list-inline-item">
                                 <a href="https://github.com/TulioHector">
                                     <span className="fa-stack fa-lg">
                                         <i className="fas fa-circle fa-stack-2x"></i>
