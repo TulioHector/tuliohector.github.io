@@ -79,7 +79,7 @@ class Post extends Component {
             <PageHeader />
             <Helmet>
                 <title>{this.postName}</title>
-                <link rel="canonical" href={`http://mysite.com/${this.postName}`} />
+                <link rel="canonical" href={`https://tuliohector.github.io/${this.postName}`} />
             </Helmet>
             <article className="mb-4">
                 <div className="container px-4 px-lg-5">
