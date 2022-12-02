@@ -13,6 +13,7 @@ const Contact = lazy(() => import("./pages/contact"));
 const NoPage = lazy(() => import('./pages/nopage'));
 const Login = lazy(() => import('./pages/login'));
 const AdminPost = lazy(() => import('./pages/adminPost'));
+const ErrorBoundary = lazy(() => import('./pages/ErrorBoundary'));
 
 class App extends Component {
     render() {
@@ -51,7 +52,7 @@ class App extends Component {
                         } />
                     <Route exact path="*" element={<NoPage />} />
                 </Route>
-                <Route path='/admin' element={<LayoutAdmin />}>
+                <Route path='/admin' element={<LayoutAdmin />} errorElement={<ErrorBoundary />}>
                     <Route index element={
                         <Suspense fallback={<Skeleton />}>
                             <Login />
