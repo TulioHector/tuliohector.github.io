@@ -1,7 +1,7 @@
 'use client';
 
 import Head from 'next/head';
-import Home from './post/page';
+import Home from './post';
 
 export default function HomePage() {
   return (

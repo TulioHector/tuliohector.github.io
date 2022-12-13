@@ -29,6 +29,14 @@ export class Database {
         return querySnapshot;
     }
 
+    static async getPostsWhitoutLimit() {
+        await Database.getConnnections();
+        const postsRef = collection(this.db, "posts");
+        const q = query(postsRef, orderBy("DatePublish"));
+        const querySnapshot = await getDocs(q);
+        return querySnapshot;
+    }
+
     static async setPost() {
         try {
             const docRef = await addDoc(collection(this.db, "posts"), {

@@ -9,7 +9,7 @@ import '../styles/notfound.css';
 import '../styles/loading.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, appProps }) {
     return (
         <>
             <Layout>
@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }) {
                     <title>Blog Hector Abraham Romano</title>
                     <Script src="./scripts/gitpage.js" />
                 </Head>
-                <Component {...pageProps} />
+                <Component {...pageProps} {...appProps} />
             </Layout>
             <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-J121YJLNSF"/>            
             <Script src='/scripts/analytics.js'/>

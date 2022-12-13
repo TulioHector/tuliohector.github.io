@@ -15,6 +15,7 @@ export const pageConfig = {
         measurementId: "G-5LDTLQ3CPB"
         //databaseURL: "https://blog-hector-default-rtdb.firebaseio.com/"
     },
+    "pagingSize": 10
 };
 
 export const PageContext = createContext();

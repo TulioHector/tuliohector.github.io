@@ -1,14 +1,31 @@
 'use client';
 
 import { Component } from 'react';
-import { withRouter } from 'next/router';
 import Markdown from "markdown-to-jsx";
-import Code from "../../components/Code";
-import { PageContext } from '../../components/context';
-import Database from '../../components/Firebase';
-import PageHeader from '../../components/PageHeader';
+import Code from "../../../components/Code";
+import { PageContext } from '../../../components/context';
+import Database from '../../../components/Firebase';
+import PageHeader from '../../../components/PageHeader';
 import Head from "next/head";
-import Loading from '../../components/Loading';
+import Loading from '../../../components/Loading';
+
+export async function getStaticProps({ params }) {
+    const { slug } = params
+    console.log("slug->", params);
+    return {
+        props: { slug },
+    };
+}
+
+export async function getStaticPaths() {
+    return {
+        paths: [
+            { params: { slug: ['2022-12-01-ADR-architecture-decision-records', '3'] } },
+            { params: { slug: ['tutorial1', '1'] } },
+            { params: { slug: ['2022-10-20-arquitectura-evolutiva', '2'] } },
+        ], fallback: false
+    }
+}
 
 class Post extends Component {
     static contextType = PageContext;
@@ -17,9 +34,10 @@ class Post extends Component {
 
     constructor(props) {
         super(props);
-        const params = props.router.query.slug;
-        this.idPost = params[1];;
-        this.postName = params[0];
+        console.log("ctrx->", props.params);
+        const slug = props.slug;
+        this.idPost = slug[1];
+        this.postName = slug[0];
         this.state = {
             postContent: '',
             isDark: true,
@@ -30,12 +48,10 @@ class Post extends Component {
         this.getTask = this.getTask.bind(this);
     }
 
-    static getInitialProps = async ({ query }) => {
-        return { query };
-    }
-
     async getTask() {
         try {
+            const params = window.location.pathname.split('/');
+            console.log("this.idPost->", this.idPost, "this.postName->", this.postName);
             const idPost = Number(this.idPost);
             const postUrl = `/posts/${this.postName}`;
             const postDb = Database.getPOstById(idPost);
@@ -57,7 +73,7 @@ class Post extends Component {
             let pageConfig = this.context.pageSettings;
             const settings = {
                 ...pageConfig,
-                backgroundImage: `url('../../assets/posts/${idPost}/${result.cover}')`,
+                backgroundImage: `url('../../../assets/posts/${idPost}/${result.cover}')`,
                 pageTitle: "",
                 pageSubTitle: "",
             }
@@ -73,6 +89,7 @@ class Post extends Component {
 
     async componentDidMount() {
         try {
+
             await this.getTask();
         } catch (error) {
             console.log(error);
@@ -137,4 +154,4 @@ class Post extends Component {
     }
 }
 
-export default withRouter(Post);
+export default Post;

@@ -2,7 +2,7 @@
 /** @type {import('next').NextConfig} */
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src  'unsafe-inline' googletagmanager.com;
+  script-src  'self' 'unsafe-eval' 'unsafe-inline'  googletagmanager.com;
   child-src tuliohector.github.io;
   style-src 'unsafe-inline' tuliohector.github.io fonts.googleapis.com;
   font-src 'self' fonts.gstatic.com identitytoolkit.googleapis.com;
@@ -30,6 +30,7 @@ const securityHeaders = [
     //   }
 ];
 const nextConfig = {
+    trailingSlash: true,
     reactStrictMode: true,
     devIndicators: {
         buildActivity: false,
@@ -38,26 +39,27 @@ const nextConfig = {
         appDir: false,
     },
 
-    async headers() {
-        return [
-            {
-                // Apply these headers to all routes in your application.
-                source: '/(.*)',
-                headers: securityHeaders,
-            },
-        ]
-    },
-    exportPathMap: async function (
-        defaultPathMap,
-        { dev, dir, outDir, distDir, buildId }
-    ) {
-        return {
-            '/': { page: '/' },
-            '/404': { page: '/404' },
-            '/about': { page: '/about' },
-            '/contact': { page: '/contact' },
-        }
-    },
+    // async headers() {
+    //     return [
+    //         {
+    //             // Apply these headers to all routes in your application.
+    //             source: '/(.*)',
+    //             headers: securityHeaders,
+    //         },
+    //     ]
+    // },
+    // exportPathMap: async function (
+    //     defaultPathMap,
+    //     { dev, dir, outDir, distDir, buildId }
+    // ) {
+    //     return {
+    //         '/': { page: '/' },
+    //         '/404': { page: '/404' },
+    //         '/about': { page: '/about' },
+    //         '/contact': { page: '/contact' },
+    //         '/post': {page: '/post'},
+    //     }
+    // },
 }
 
 module.exports = nextConfig

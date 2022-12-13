@@ -1,7 +1,7 @@
 {
   "name": "tuliohector.github.io",
   "version": "0.1.0",
-  "homepage": "https://tuliohector.github.io",
+  "homepage": "/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.1",
@@ -15,6 +15,7 @@
     "react": "^18.2.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-markdown": "^8.0.4",
     "react-syntax-highlighter": "^15.5.0",
     "react-toastify": "^9.1.1",
@@ -27,7 +28,8 @@
     "build": "next build && next export",
     "test": "next test",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d out",
+    "lint": "next lint"
   },
   "eslintConfig": {
     "extends": [
@@ -48,7 +50,7 @@
     ]
   },
   "devDependencies": {
-    "@craco/craco": "^7.0.0",
+    "@craco/craco": "^5.9.0",
     "gh-pages": "^4.0.0"
   },
   "browser": {
