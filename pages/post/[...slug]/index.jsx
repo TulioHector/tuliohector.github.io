@@ -34,7 +34,6 @@ class Post extends Component {
 
     constructor(props) {
         super(props);
-        console.log("ctrx->", props.params);
         const slug = props.slug;
         this.idPost = slug[1];
         this.postName = slug[0];
@@ -50,8 +49,6 @@ class Post extends Component {
 
     async getTask() {
         try {
-            const params = window.location.pathname.split('/');
-            console.log("this.idPost->", this.idPost, "this.postName->", this.postName);
             const idPost = Number(this.idPost);
             const postUrl = `/posts/${this.postName}`;
             const postDb = Database.getPOstById(idPost);
